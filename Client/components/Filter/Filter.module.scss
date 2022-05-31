@@ -1,0 +1,270 @@
+@import "../../styles/mixins";
+@import "../../styles/_сolors.scss";
+@import "../../styles/_fontWeights.scss";
+
+.filter {
+    width: 360px;
+    height: max-content;
+    padding: 22px 24px;
+    border-radius: 12px;
+    background-color: #f8f8f8;
+    @include customScroll;
+    h1,
+    h2,
+    h3 {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .windowTitle {
+        display: none;
+    }
+    .title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    .icon {
+        margin-left: 20px;
+        transition: transform 0.2s;
+    }
+    .upLevel {
+        font-size: 22px;
+        .title {
+            h1 {
+                padding: 10px 0;
+                font-weight: $semiBold;
+            }
+            &:hover {
+                h1,
+                .icon {
+                    color: $brand_red_500;
+                }
+            }
+        }
+        &.active {
+            & > .title {
+                h1,
+                .icon {
+                    color: $brand_red_500;
+                }
+                .icon {
+                    transform: rotate(90deg);
+                }
+            }
+            .midLevel {
+                display: block;
+            }
+            &:not(.open) {
+                & > .title .icon {
+                    transform: unset;
+                }
+                .midLevel {
+                    display: none;
+                }
+            }
+        }
+        &.open {
+            .midLevel {
+                display: block;
+            }
+            & > .title .icon {
+                transform: rotate(90deg);
+            }
+        }
+
+        .midLevel {
+            display: none;
+            margin-left: 24px;
+            & > .title {
+                h2 {
+                    padding: 8px 0;
+                    font-size: 20px;
+                    font-weight: $medium;
+                }
+                &:hover {
+                    h2,
+                    .icon {
+                        color: $brand_red_500;
+                    }
+                }
+            }
+            &.active {
+                & > .title {
+                    h2,
+                    .icon {
+                        color: $brand_red_500;
+                    }
+                    .icon {
+                        transform: rotate(90deg);
+                    }
+                }
+                .lowLevel {
+                    display: block;
+                }
+                &:not(.open) {
+                    & > .title .icon {
+                        transform: unset;
+                    }
+                    .lowLevel {
+                        display: none;
+                    }
+                }
+            }
+            &.open {
+                .lowLevel {
+                    display: block;
+                }
+                & > .title .icon {
+                    transform: rotate(90deg);
+                }
+            }
+            .lowLevel {
+                display: none;
+                margin-left: 20px;
+                font-size: 18px;
+                cursor: pointer;
+                & > h3 {
+                    padding: 8px 0;
+                    font-weight: $regular;
+                }
+                &:hover,
+                &.active {
+                    h3 {
+                        color: $brand_red_500;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .filter {
+        width: 300px;
+        padding: 16px 20px;
+        border-radius: 10px;
+        .icon {
+            font-size: 18px;
+            margin-left: 18px;
+        }
+        .upLevel {
+            font-size: 20px;
+            .title {
+                h1 {
+                    padding: 8px 0;
+                }
+            }
+            .midLevel {
+                margin-left: 20px;
+                & > .title {
+                    h2 {
+                        padding: 7px 0;
+                        font-size: 18px;
+                    }
+                }
+                .lowLevel {
+                    margin-left: 16px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .filter {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        padding: 32px;
+        max-height: 100vh;
+        overflow-y: auto;
+        border-radius: 0;
+        color: $brand_blue_500;
+        background-color: $text_white;
+        .windowTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 22px;
+            font-weight: $medium;
+            margin-bottom: 24px;
+            .closeButton {
+                font-size: 20px;
+                cursor: pointer;
+                padding: 5px;
+                transform: translateX(7px);
+            }
+        }
+        .upLevel {
+            font-size: 18px;
+            .title {
+                border-bottom: 0.75px solid #e9e9e9;
+                h1 {
+                    padding: 16px 0;
+                    color: inherit;
+                    font-weight: $regular;
+                }
+            }
+            &.active {
+                & > .title {
+                    h1,
+                    .icon {
+                        color: $brand_red_500;
+                    }
+                }
+            }
+            .midLevel {
+                margin-left: 0;
+                font-size: 18px;
+                & > .title {
+                    padding-left: 24px;
+                    h2 {
+                        padding: 16px 0;
+                        font-weight: $regular;
+                    }
+                }
+                .lowLevel {
+                    margin-left: 0;
+                    font-size: 18px;
+                    border-bottom: 0.75px solid #e9e9e9;
+                    & > h3 {
+                        padding: 16px 0;
+                        padding-left: 44px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .filter {
+        padding: 16px;
+        height: 100vh;
+        .windowTitle {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .upLevel {
+            font-size: 16px;
+            .midLevel {
+                font-size: 16px;
+                & > .title {
+                    padding-left: 16px;
+                }
+                .lowLevel {
+                    font-size: 16px;
+                    & > h3 {
+                        padding-left: 32px;
+                    }
+                }
+            }
+        }
+    }
+}

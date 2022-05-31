@@ -1,0 +1,509 @@
+@import "./styles/mixins";
+@import "./styles/_сolors.scss";
+@import "./styles/_fontWeights.scss";
+
+$heroBlockBackgroundColor: rgba($brand_blue_500, 0.6);
+$heroBlockBackgroundOverlay: linear-gradient(0deg, $heroBlockBackgroundColor, $heroBlockBackgroundColor);
+$heroBlockImageUrl: "https://img.freepik.com/free-photo/expressing-brightful-true-emotions-positivity-young-pretty-woman-with-short-brunette-curly-hair-bed-surround-carton-boxes-modern-apartment-enjoying-moving-happiness-new-home_197531-2319.jpg?w=900&t=st=1653217767~exp=1653218367~hmac=5c3e6c2c55c2767ac968b9f07d18cd5b7fd4e68b00eab17d01d9de2f4bf71c35";
+
+.heroBlock {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 0 70px;
+    background: $heroBlockBackgroundOverlay, url($heroBlockImageUrl);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    & > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 800px;
+        color: $text_white;
+        text-align: center;
+        & > h1 {
+            font-size: 48px;
+            font-weight: $semiBold;
+            max-width: 700px;
+            line-height: 115%;
+        }
+        & > h2 {
+            font-size: 28px;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        .searchBar {
+            $height: 80px;
+            $radius: $height / 2;
+            $padding: 30px;
+            $fontSize: 24px;
+
+            width: 100%;
+            height: $height;
+            margin-top: 32px;
+            border-radius: $radius;
+            form {
+                display: grid;
+                grid-template-columns: 1fr max-content;
+                input[type="search"] {
+                    width: 100%;
+                    height: $height;
+                    border-radius: $radius 0 0 $radius;
+                    padding: 0 $padding;
+                    font-size: $fontSize;
+                }
+                input[type="submit"] {
+                    height: $height;
+                    border-radius: 0 $radius $radius 0;
+                    padding: 0 $padding * 2;
+                    font-size: $fontSize;
+                    color: $text_white;
+                    background-color: $brand_red_500;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: #e34242;
+                    }
+                    &:active {
+                        background-color: #d43939;
+                    }
+                    &:disabled {
+                        background-color: $brand_red_400;
+                        cursor: not-allowed;
+                        &:hover,
+                        &:active {
+                            background-color: $brand_red_400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .arrowContainer {
+        width: 50px;
+        height: 70px;
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        & > div {
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            cursor: pointer;
+            .arrowDown {
+                $size: 50px;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: $size;
+                height: $size - 30px;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 30px;
+                color: $text_white;
+                animation: arrowDownAnimation 2s infinite linear;
+                &:nth-child(2) {
+                    animation-delay: 1s;
+                }
+                @keyframes arrowDownAnimation {
+                    $start: 0;
+                    $distance: 30px;
+
+                    0% {
+                        top: $start;
+                        opacity: 0;
+                    }
+                    50% {
+                        top: $start + $distance / 2;
+                        opacity: 0.7;
+                    }
+                    100% {
+                        top: $start + $distance;
+                        opacity: 0;
+                    }
+                }
+            }
+            & > span:last-child {
+                font-size: 20px;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+            }
+            &:hover > span:last-child {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.categoriesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    .category {
+        flex: 1;
+        width: 100%;
+        min-width: 300px;
+        padding: 106px;
+        border-radius: 30px;
+        font-size: 24px;
+        font-weight: $semiBold;
+        color: $text_white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        h3 {
+            z-index: 3;
+            line-height: 28px;
+        }
+        .overlay {
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .image {
+            position: absolute;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+        &:hover {
+            .image {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.requestsContainer {
+    $cardWidth: 313px;
+    $heightImage: 164px;
+    $paddingContainer: 10px;
+    $heightContainer: 280px;
+    $widthContainer: $cardWidth + $paddingContainer * 2;
+    height: max-content;
+    .card {
+        width: $widthContainer;
+        height: $heightContainer;
+        margin: 0 $paddingContainer;
+        .link {
+            display: grid;
+            grid-template-rows: $heightImage 1fr;
+            width: $cardWidth;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+            -webkit-user-drag: none;
+            .imageContainer {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background-color: rgba(0, 0, 0, 0.2);
+                transition: background-color 0.2s;
+                .image {
+                    -webkit-user-drag: none;
+                    z-index: -1;
+                    transition: transform 0.2s;
+                }
+            }
+            &:hover {
+                .imageContainer {
+                    background-color: rgba(0, 0, 0, 0);
+                    .image {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+            .content {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 16px;
+                & > h3 {
+                    font-size: 20px;
+                    font-weight: $medium;
+                    max-height: 50%;
+                    overflow: hidden;
+                }
+                & > h4 {
+                    font-size: 16px;
+                    color: $text_black_400;
+                    text-align: end;
+                }
+            }
+            &:hover {
+                .content > h3 {
+                    color: $brand_red_500;
+                }
+            }
+        }
+    }
+}
+.instructionContainer {
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .switch {
+        margin-bottom: 24px;
+        border-radius: 30px;
+        background-color: $brand_blue_500;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        span {
+            font-size: 18px;
+            padding: 15px 12px;
+            width: 130px;
+            height: 55px;
+            font-weight: $medium;
+            color: $text_white;
+            display: flex;
+            height: max-content;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            user-select: none;
+            &:first-child {
+                padding-left: 15px;
+            }
+            &:last-child {
+                padding-right: 15px;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            width: calc(50% + 6px);
+            height: 100%;
+            border-radius: 30px;
+            background-color: $brand_red_500;
+            transition: left 0.2s;
+        }
+        &.user::after {
+            left: 0;
+        }
+        &.business::after {
+            left: calc(50% - 6px);
+        }
+    }
+    .tableContainer {
+        width: 100%;
+        height: 520px;
+        & > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &.xl {
+                display: block;
+            }
+            &.lg,
+            &.md,
+            &.sm,
+            &.xs {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .instructionContainer .tableContainer {
+        & > div {
+            &.xl {
+                display: none;
+            }
+            &.lg {
+                display: block;
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .categoriesContainer {
+        gap: 24px;
+        .category {
+            font-size: 20px;
+        }
+    }
+
+    .instructionContainer {
+        .switch > span {
+            width: 110px;
+            font-size: 14px;
+        }
+        .tableContainer {
+            & > div {
+                &.lg {
+                    display: none;
+                }
+                &.md {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .heroBlock {
+        & > div {
+            max-width: 600px;
+            & > h1 {
+                font-size: 36px;
+            }
+            & > h2 {
+                font-size: 26px;
+            }
+            .searchBar {
+                $height: 60px;
+                $radius: $height / 2;
+                $padding: 20px;
+                $fontSize: 18px;
+
+                margin-top: 24px;
+                height: $height;
+                border-radius: $radius;
+                form {
+                    input[type="search"] {
+                        height: $height;
+                        border-radius: $radius 0 0 $radius;
+                        padding: 0 $padding;
+                        font-size: $fontSize;
+                    }
+                    input[type="submit"] {
+                        height: $height;
+                        border-radius: 0 $radius $radius 0;
+                        padding: 0 $padding * 2;
+                        font-size: $fontSize;
+                        color: $text_white;
+                    }
+                }
+            }
+        }
+        .arrowContainer {
+            display: none;
+        }
+    }
+
+    .requestsContainer {
+        $cardWidth: 255px;
+        $paddingContainer: 5px;
+        $heightContainer: 264px;
+        $widthContainer: $cardWidth + $paddingContainer * 2;
+        .card {
+            width: $widthContainer;
+            height: $heightContainer;
+            margin: 0 $paddingContainer;
+            .link {
+                width: $cardWidth;
+                .content {
+                    & > h3 {
+                        font-size: 16px;
+                    }
+                    & > h4 {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .instructionContainer .tableContainer {
+        height: 1000px;
+        & > div {
+            &.md {
+                display: none;
+            }
+            &.sm {
+                display: block;
+            }
+        }
+    }
+}
+@media screen and (max-width: 576px) {
+    .heroBlock {
+        height: 50vh;
+        padding: 0 40px;
+        & > div {
+            max-width: 600px;
+            & > h1 {
+                font-size: 24px;
+            }
+            & > h2 {
+                font-size: 18px;
+            }
+            .searchBar {
+                $height: 30px;
+                $radius: $height / 2;
+                $padding: 16px;
+                $fontSize: 14px;
+
+                margin-top: 16px;
+                height: $height;
+                border-radius: $radius;
+                form {
+                    input[type="search"] {
+                        height: $height;
+                        border-radius: $radius 0 0 $radius;
+                        padding: 0 $padding;
+                        font-size: $fontSize;
+                    }
+                    input[type="submit"] {
+                        height: $height;
+                        border-radius: 0 $radius $radius 0;
+                        padding: 0 $padding;
+                        font-size: $fontSize;
+                        color: $text_white;
+                    }
+                }
+            }
+        }
+    }
+
+    .instructionContainer .tableContainer {
+        height: 1200px;
+        & > div {
+            &.sm {
+                display: none;
+            }
+            &.xs {
+                display: block;
+            }
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .advantages {
+        .container {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            & > div {
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+        }
+    }
+}

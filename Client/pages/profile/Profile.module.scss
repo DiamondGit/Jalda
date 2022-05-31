@@ -1,0 +1,289 @@
+@import "../../styles/mixins";
+@import "../../styles/сolors";
+@import "../../styles/fontWeights";
+
+.mainTitle {
+    margin: 56px 0 32px;
+    font-size: 36px;
+    font-weight: $semiBold;
+}
+
+.tabContent {
+    display: none;
+    min-height: 40vh;
+    margin-bottom: 64px;
+    &.active {
+        display: block;
+    }
+    .notFound {
+        color: $text_black_300;
+        font-size: 18px;
+        line-height: 21px;
+    }
+    .profileInfo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "infos infos"
+            "creditCards creditCards"
+            "password exit";
+        gap: 32px 20px;
+
+        .container {
+            box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 48px;
+            .title {
+                font-weight: $medium;
+                font-size: 32px;
+            }
+            &.infos {
+                grid-area: infos;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                .upPart {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    .profile {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .imageContainer {
+                            position: relative;
+                            margin-right: 32px;
+                            .image {
+                                position: relative;
+                                overflow: hidden;
+                                $imageSize: 100px;
+                                width: $imageSize;
+                                height: $imageSize;
+                                border-radius: 50%;
+                            }
+                            .changeImage {
+                                position: absolute;
+                                bottom: 0;
+                                right: 0;
+                                $size: 30px;
+                                width: $size;
+                                height: $size;
+                                border-radius: $size;
+                                background-color: $brand_blue_500;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                                .icon {
+                                    $iconSize: 20px;
+                                    width: $iconSize;
+                                    height: $iconSize;
+                                    position: relative;
+                                }
+                            }
+                        }
+                    }
+                    .edit {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 18px;
+                        font-weight: $medium;
+                        color: $brand_blue_500;
+                        background-color: transparent;
+                        .icon {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+                .content {
+                    margin-top: 98px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 32px 136px;
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        font-size: 18px;
+                        & > h4 {
+                            color: $text_black_400;
+                            margin-bottom: 5px;
+                            line-height: 21px;
+                        }
+                    }
+                }
+            }
+            &.creditCards {
+                grid-area: creditCards;
+                .cards {
+                    margin-top: 24px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 24px;
+
+                    .addCard {
+                        width: 329px;
+                        aspect-ratio: 329/193;
+                        border-radius: 18px;
+                        border: 1px solid $brand_blue_500;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 18px;
+                        color: $brand_blue_500;
+                        cursor: pointer;
+                        transition: background 0.2s;
+                        &:hover {
+                            background-color: #f6f6f6;
+                        }
+                        & > span {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            .icon {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                $size: 28px;
+                                width: $size;
+                                height: $size;
+                                border-radius: 50%;
+                                border: 2px solid $brand_blue_500;
+                                font-size: 14px;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.password {
+                grid-area: password;
+                padding: 30px 48px;
+                cursor: pointer;
+            }
+            &.exit {
+                grid-area: exit;
+                padding: 30px 48px;
+                cursor: pointer;
+            }
+        }
+    }
+    .loadingContainer {
+        height: 100%;
+        position: relative;
+    }
+    .controlPanel {
+        margin-bottom: 32px;
+        display: grid;
+        gap: 30px;
+
+        &:not(.isFavTab) {
+            grid-template-columns: auto auto minmax(max-content, 350px);
+        }
+        &.isFavTab {
+            grid-template-columns: auto minmax(max-content, 350px);
+        }
+        .group {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+            & > h3 {
+                font-size: 20px;
+                width: max-content;
+            }
+        }
+        .searchForm {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr auto;
+
+            input {
+                display: block;
+                line-height: 127%;
+                letter-spacing: 0.02em;
+                height: 100%;
+            }
+            input[type="search"] {
+                height: 42px;
+                border-radius: 8px 0 0 8px;
+                border: 1px solid #e3e5e6;
+                min-width: 100px;
+                padding: 11px 16px;
+                font-size: 15px;
+                border-right: none;
+                &:hover {
+                    border-color: $text_black_400;
+                }
+                &:focus {
+                    border-color: $brand_blue_500;
+                }
+            }
+            input[type="submit"] {
+                border-radius: 0 8px 8px 0;
+                font-size: 16px;
+                padding: 10px 18px;
+                color: $text_white;
+                font-weight: $medium;
+                background-color: $brand_red_500;
+                cursor: pointer;
+                &:hover {
+                    background-color: #e34242;
+                }
+                &:active {
+                    background-color: #d43939;
+                }
+                &:disabled {
+                    background-color: $brand_red_400;
+                    cursor: not-allowed;
+                    &:hover,
+                    &:active {
+                        background-color: $brand_red_400;
+                    }
+                }
+            }
+        }
+    }
+    .resetSearch {
+        width: max-content;
+        margin-left: auto;
+        margin-bottom: 24px;
+        color: $brand_blue_500;
+        font-size: 18px;
+        line-height: 21px;
+        cursor: pointer;
+    }
+
+    .booksContainer,
+    .favsContainer,
+    .applicationsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    .adsContainer {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(250px, 1fr));
+        grid-auto-rows: minmax(440px, max-content);
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .tabContent {
+        .adsContainer {
+            grid-template-columns: repeat(3, minmax(250px, 1fr));
+            grid-auto-rows: minmax(300px, max-content);
+        }
+    }
+}

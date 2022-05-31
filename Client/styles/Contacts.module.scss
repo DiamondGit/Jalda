@@ -1,0 +1,230 @@
+@import "./сolors.scss";
+@import "./_fontWeights.scss";
+
+.mainContainer {
+    padding: 32px 0 64px;
+    .container {
+        width: fit-content;
+        margin: 48px auto 0;
+        display: grid;
+        grid-template-columns: max-content minmax(300px, 600px);
+        grid-template-rows: auto auto;
+        grid-template-areas: "title image" "mainContent image";
+        column-gap: 70px;
+        & > h1 {
+            grid-area: title;
+            font-size: 36px;
+            font-weight: $semiBold;
+            margin-bottom: 32px;
+        }
+        .contentConainer {
+            grid-area: mainContent;
+            ul li {
+                font-size: 20px;
+                margin-bottom: 16px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                span {
+                    font-weight: $medium;
+                    margin-right: 8px;
+                }
+            }
+            .socialsContainer {
+                margin-top: 24px;
+                & > h3 {
+                    font-size: 20px;
+                    font-weight: $medium;
+                }
+                .socials {
+                    margin-top: 18px;
+                    width: max-content;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 16px;
+                    .iconContainer {
+                        $size: 30px;
+                        width: $size;
+                        height: $size;
+                        border-radius: $size / 2;
+                        position: relative;
+                        img {
+                            -webkit-user-drag: none;
+                        }
+                    }
+                }
+            }
+        }
+        .imageContainer {
+            width: 100%;
+            grid-area: image;
+            position: relative;
+            aspect-ratio: 2/1;
+        }
+    }
+}
+.formSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 64px 0;
+    background-color: $brand_blue_800;
+    text-align: center;
+    & > h2 {
+        font-size: 36px;
+        font-weight: $semiBold;
+        color: $text_white;
+        margin-bottom: 8px;
+    }
+    & > h3 {
+        font-size: 24px;
+        font-weight: $regular;
+        color: $text_white;
+        opacity: 0.7;
+        margin-bottom: 32px;
+    }
+    .form {
+        width: 410px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 16px;
+        input:not([type="submit"]),
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 20px 12px;
+            border-radius: 4px;
+        }
+        textarea {
+            max-width: 100%;
+            min-width: 100%;
+            min-height: 150px;
+            max-height: 250px;
+        }
+        .inputContainer {
+            width: 100%;
+            margin-bottom: 15px;
+            input:read-only {
+                color: $text_black_300;
+                background-color: $text_white;
+            }
+        }
+        .errorMessage {
+            width: 100%;
+            display: block;
+            text-align: left;
+            font-size: 12px;
+            margin-top: 5px;
+            color: $brand_red_500;
+        }
+    }
+}
+.mapContainer {
+    width: 100%;
+    height: 275px;
+}
+
+@media screen and (max-width: 992px) {
+    .mainContainer {
+        padding: 24px 0 48px;
+        .container {
+            margin-top: 24px;
+            column-gap: 40px;
+            & > h1 {
+                font-size: 28px;
+                margin-bottom: 24px;
+            }
+            .contentConainer {
+                ul li {
+                    font-size: 18px;
+                    margin-bottom: 14px;
+                }
+                .socialsContainer {
+                    margin-top: 22px;
+                    & > h3 {
+                        font-size: 18px;
+                    }
+                    .socials {
+                        margin-top: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .formSection {
+        padding: 24px 16px;
+        & > h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        & > h3 {
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .form {
+            width: 400px;
+            font-size: 14px;
+            input,
+            textarea {
+                padding: 16px 8px;
+            }
+            textarea {
+                min-height: 100px;
+                max-height: 150px;
+            }
+        }
+    }
+    .mapContainer {
+        height: 130px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        padding: 16px 0 24px;
+        .container {
+            width: 100%;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            grid-template-areas: "title" "image" "mainContent";
+            & > h1 {
+                grid-area: title;
+                font-size: 20px;
+                text-align: center;
+            }
+            .contentConainer {
+                grid-area: mainContent;
+                margin-top: 24px;
+                ul li {
+                    font-size: 15px;
+                    margin-bottom: 12px;
+                }
+                .socialsContainer {
+                    margin-top: 16px;
+                    & > h3 {
+                        font-size: 15px;
+                    }
+                    .socials {
+                        margin-top: 12px;
+                    }
+                }
+            }
+            .imageContainer {
+                grid-area: image;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .formSection {
+        .form {
+            width: 100%;
+        }
+    }
+}

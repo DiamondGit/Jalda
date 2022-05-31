@@ -1,0 +1,19 @@
+{
+    "name": "npm-test",
+    "version": "1.0.0",
+    "description": "Jalda web-service's starter",
+    "main": "index.js",
+    "scripts": {
+        "client": "cd Client && npm run dev",
+        "server": "cd Server && npm start",
+        "dev": "concurrently -k -n \"client,server\" -c \"black.bgCyan.dim,black.bgMagenta.dim\" \"npm run client\" \"npm run server\"",
+        "create_client": "cd Client && npm i && npm run dev",
+        "create_server": "cd Server && npm i && npm start",
+        "create_dev": "concurrently -k -n \"client,server\" -c \"black.bgCyan.dim,black.bgMagenta.dim\" \"npm run create_client\" \"npm run create_server\""
+    },
+    "author": "Giorgio",
+    "license": "ISC",
+    "dependencies": {
+        "concurrently": "^7.2.1"
+    }
+}

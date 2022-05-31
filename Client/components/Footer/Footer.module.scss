@@ -1,0 +1,254 @@
+@import "../../styles/_сolors.scss";
+@import "../../styles/_fontWeights.scss";
+
+.footer {
+    grid-area: footer;
+    width: 100%;
+    height: max-content;
+    padding: 48px 0 16px;
+    color: $text_white;
+    background-color: $brand_blue_800;
+    .wrapper {
+        height: max-content;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        .mainContainer {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            .logoContainer {
+                max-width: 200px;
+                .logo {
+                    position: relative;
+                    width: 120px;
+                    height: 60px;
+                    a {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        display: block;
+                    }
+                }
+                h3 {
+                    margin-top: 16px;
+                    font-size: 20px;
+                    line-height: 25px;
+                }
+            }
+            .linksSection {
+                width: max-content;
+                height: max-content;
+
+                display: grid;
+                grid-template-areas: "Ads Partners About";
+
+                align-items: start;
+                gap: 32px 120px;
+
+                font-size: 18px;
+                .ads {
+                    grid-area: Ads;
+                }
+                .partners {
+                    grid-area: Partners;
+                }
+                .about {
+                    grid-area: About;
+                }
+                .tabLinks {
+                    width: max-content;
+                    max-width: 250px;
+                    height: max-content;
+                    & > div {
+                        h3 {
+                            margin-bottom: 24px;
+                            color: $text_white;
+                            font-weight: $semiBold;
+                        }
+                        .arrowDown {
+                            display: none;
+                        }
+                    }
+                    .links {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        a,
+                        a:visited {
+                            margin-bottom: 16px;
+                            color: $text_white;
+                            opacity: 0.8;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+            .contactsSection {
+                .contacts li {
+                    margin-bottom: 16px;
+                    & > div {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        .icon {
+                            $size: 20px;
+                            width: $size;
+                            height: $size;
+                            position: relative;
+                            img {
+                                -webkit-user-drag: none;
+                            }
+                        }
+                        & > h3 {
+                            margin-left: 8px;
+                            font-size: 16px;
+                        }
+                    }
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                .socials {
+                    margin-top: 23px;
+                    width: max-content;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 16px;
+                    .iconContainer {
+                        $size: 30px;
+                        width: $size;
+                        height: $size;
+                        border-radius: $size / 2;
+                        position: relative;
+                        img {
+                            -webkit-user-drag: none;
+                        }
+                    }
+                }
+            }
+        }
+        .copyright {
+            font-size: 14px;
+            margin-top: 55px;
+            opacity: 0.8;
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .footer {
+        .wrapper {
+            .mainContainer {
+                .linksSection {
+                    grid-template-areas:
+                        "Ads About"
+                        "Partners .";
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1200px) {
+    .footer {
+        .wrapper {
+            .mainContainer {
+                .logoContainer {
+                    display: none;
+                }
+                .linksSection {
+                    font-size: 16px;
+                    grid-template-areas:
+                        "Ads About"
+                        "Partners .";
+                }
+                .contactsSection {
+                    .contacts li {
+                        & > div {
+                            & > h3 {
+                                margin-left: 7px;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .footer {
+        padding-top: 32px;
+        .wrapper {
+            .mainContainer {
+                .linksSection {
+                    gap: 32px 80px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .footer {
+        padding-top: 16px;
+        .wrapper {
+            .mainContainer {
+                display: block;
+                width: 100%;
+                .linksSection {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 24px;
+                    .tabLinks {
+                        max-width: unset;
+                        width: 100%;
+                        border-bottom: 0.5px solid #dfe6f8cc;
+                        .tabTitle {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            cursor: pointer;
+                            padding: 16px 0;
+                            h3 {
+                                margin: 0;
+                            }
+                            .arrowDown {
+                                display: block;
+                            }
+                        }
+                        .links {
+                            display: none;
+                            a {
+                                margin: 0;
+                                padding: 8px 0;
+                                &:last-child {
+                                    padding-bottom: 16px;
+                                }
+                            }
+                        }
+                        &.active {
+                            .tabTitle {
+                                padding-bottom: 8px;
+                            }
+                            .arrowDown {
+                                transform: rotate(180deg);
+                            }
+                            .links {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

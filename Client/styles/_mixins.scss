@@ -1,0 +1,44 @@
+@import "./сolors";
+
+@mixin customScroll {
+    /* width */
+    &::-webkit-scrollbar {
+        width: 5px !important;
+        height: 5px !important;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: $text_gray_100 !important;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $text_black_400 !important;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: $text_black_500 !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px !important;
+        height: 5px !important;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: $text_gray_100 !important;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $text_black_400 !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: $text_black_500 !important;
+    }
+}

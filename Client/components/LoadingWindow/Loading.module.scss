@@ -1,0 +1,37 @@
+@import "../../styles/сolors";
+@import "../../styles/fontWeights";
+
+.fill {
+    height: 100%;
+    min-height: 100px;
+    position: relative;
+}
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logoContainer {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation: rotation 2s infinite;
+    }
+}
+
+@keyframes rotation {
+    30% {
+        transform: rotate(180deg);
+    }
+    60% {
+        transform: rotate(-90deg);
+    }
+    80% {
+        transform: rotate(45deg);
+    }
+}

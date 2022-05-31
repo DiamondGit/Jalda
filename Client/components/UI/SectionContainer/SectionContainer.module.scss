@@ -1,0 +1,48 @@
+@import "../../../styles/сolors.scss";
+@import "../../../styles/fontWeights.scss";
+
+.sectionContainer {
+    padding: 64px 0;
+    & > .sectionTitle {
+        margin-bottom: 48px;
+        text-align: center;
+        font-size: 34px;
+        font-weight: $semiBold;
+        &.left {
+            text-align: left;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .sectionContainer {
+        padding: 48px 0;
+        & > .sectionTitle {
+            margin-bottom: 36px;
+            font-size: 28px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .sectionContainer {
+        padding: 36px 0;
+        & > .sectionTitle {
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sectionContainer {
+        padding: 24px 0;
+        & > .sectionTitle {
+            margin-bottom: 24px;
+            font-size: 20px;
+            &.left {
+                text-align: center;
+            }
+        }
+    }
+}

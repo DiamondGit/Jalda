@@ -1,0 +1,52 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.pagination {
+    margin: 48px auto 0;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 0.75px solid #bfbfbf;
+    li {
+        .node {
+            padding: 0 16px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $text_black_300;
+            font-size: 18px;
+            background-color: $text_white;
+            border-right: 0.75px solid #d7d7d7;
+            &.selected {
+                color: $brand_red_500;
+            }
+            &:disabled {
+                cursor: default;
+                color: #dedede;
+            }
+            &:hover {
+                background-color: #e8e8e8;
+            }
+        }
+        &:last-child .node {
+            border-right: unset;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .pagination {
+        margin: 24px auto 0;
+        li {
+            .node {
+                padding: 0 12px;
+                height: 36px;
+                font-size: 14px;
+            }
+        }
+    }
+}

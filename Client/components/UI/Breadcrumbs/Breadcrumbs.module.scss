@@ -1,0 +1,43 @@
+@import "../../../styles/mixins";
+@import "../../../styles/_сolors.scss";
+@import "../../../styles/_fontWeights.scss";
+
+.breadcrumbs {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
+    $fontSize: 16px;
+    font-size: $fontSize;
+    @include customScroll;
+    .node {
+        $numberOfLines: 1;
+        $lineHeight: calc($fontSize * 1.25);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $numberOfLines;
+        line-height: $lineHeight;
+        max-height: calc($lineHeight * $numberOfLines);
+        width: max-content;
+        max-width: 250px;
+        font-weight: $regular;
+        color: $brand_blue_500;
+        &.last {
+            color: $text_black_400;
+        }
+        &:hover:not(.last) {
+            text-decoration: underline;
+        }
+    }
+    .separator {
+        margin: 0 4px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .breadcrumbs {
+        font-size: 14px;
+    }
+}

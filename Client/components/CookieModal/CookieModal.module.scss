@@ -1,0 +1,40 @@
+@import "../../styles/сolors";
+@import "../../styles/fontWeights";
+
+.mainContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: max-content;
+    background-color: rgba($text_gray_400, 0.9);
+    color: $text_white;
+    z-index: 10000;
+    padding: 32px 0;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+    .wrapper {
+        display: grid;
+        grid-template-columns: 100px 1fr auto;
+        align-items: center;
+        gap: 24px;
+        .imageContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            .title {
+                font-size: 26px;
+                font-weight: $semiBold;
+            }
+            .text {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+    }
+}
