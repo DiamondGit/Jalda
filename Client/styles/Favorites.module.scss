@@ -1,0 +1,7 @@
+.mainContainer {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 32px;
+}

@@ -1,0 +1,62 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.tabsContainer {
+    display: flex;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $brand_blue_100;
+    height: 58px;
+    .tab {
+        z-index: 10;
+        height: 58px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 24px;
+        font-size: 24px;
+        color: $text_black_400;
+        cursor: pointer;
+        &.active {
+            transform: translateY(1px);
+            color: $brand_blue_500;
+            font-weight: $medium;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border: 1px solid $brand_blue_100;
+            border-bottom-color: #fff;
+            border-bottom-width: 3px;
+            position: relative;
+            &.firstTab::before {
+                display: none;
+            }
+            &.lastTab::after {
+                // display: none;
+            }
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -2.5px;
+                $size: 15px;
+                width: $size;
+                height: $size;
+            }
+            &::before {
+                left: 0;
+                transform: translateX(-100%);
+                border-right: 1px solid $brand_blue_100;
+                border-bottom: 1px solid $brand_blue_100;
+                border-bottom-right-radius: 5px;
+                box-shadow: 5px 5px 0 #fff;
+            }
+            &::after {
+                right: 0;
+                transform: translateX(100%);
+                border-left: 1px solid $brand_blue_100;
+                border-bottom: 1px solid $brand_blue_100;
+                border-bottom-left-radius: 5px;
+                box-shadow: -5px 5px 0 #fff;
+            }
+        }
+    }
+}

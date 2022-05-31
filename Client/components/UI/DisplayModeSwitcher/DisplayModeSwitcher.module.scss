@@ -1,0 +1,30 @@
+@import "../../../styles/сolors";
+
+.container {
+    $size: 20px;
+    $gap: 2px;
+    $padding: 10px;
+    $borderWidth: 3px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    .icon {
+        $size: 30px;
+        position: relative;
+        width: $size;
+        height: $size;
+        cursor: pointer;
+        img {
+            -webkit-user-drag: none;
+        }
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .container {
+        display: none;
+    }
+}

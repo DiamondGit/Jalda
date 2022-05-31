@@ -1,0 +1,64 @@
+@import "../../../../../styles/сolors";
+@import "../../../../../styles/fontWeights";
+
+.imageCarousel {
+    background-color: rgb(202, 202, 202);
+    overflow: hidden;
+    .imageContainer {
+        width: 908px;
+        height: 460px;
+        position: relative;
+    }
+}
+.content {
+    padding: 48px 32px;
+    .mainTitle {
+        display: block;
+        width: max-content;
+        font-size: 24px;
+        font-weight: $semiBold;
+        margin-bottom: 24px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .bookInfos {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 14px;
+        h3 {
+            font-size: 18px;
+            span {
+                font-weight: $medium;
+            }
+        }
+    }
+    .descriptionContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 48px;
+        .description {
+            font-size: 16px;
+            line-height: 127%;
+            color: $text_black_400;
+        }
+    }
+    .buttonsContainer {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .rightPart {
+            width: max-content;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+        }
+    }
+}

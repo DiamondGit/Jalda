@@ -1,0 +1,180 @@
+@import "./сolors.scss";
+@import "./_fontWeights.scss";
+
+.mainContainer {
+    padding: 32px 0 64px;
+    .container {
+        width: fit-content;
+        margin: 48px auto 0;
+        display: grid;
+        grid-template-columns: minmax(250px, 550px) minmax(400px, 550px);
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "title image" "mainContent image";
+        column-gap: 150px;
+        & > h1 {
+            grid-area: title;
+            font-size: 36px;
+            font-weight: $semiBold;
+            margin-bottom: 32px;
+        }
+        .contentConainer {
+            grid-area: mainContent;
+            & > p {
+                font-size: 16px;
+                color: $text_black_400;
+                margin-bottom: 16px;
+                line-height: 127%;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .imageContainer {
+            width: 100%;
+            grid-area: image;
+            position: relative;
+            &.cover {
+                display: none;
+            }
+        }
+    }
+}
+.statisticsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    align-items: start;
+    gap: 50px;
+    .statistic {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        & > h1 {
+            font-size: 64px;
+            color: $brand_blue_500;
+            font-weight: $bold;
+            margin-bottom: 8px;
+            width: max-content;
+        }
+        & > p {
+            font-size: 20px;
+            line-height: 22px;
+        }
+    }
+}
+.partnersSection {
+    font-size: 20px;
+    .partnerCard {
+        $size: 150px;
+        width: $size;
+        height: $size;
+        padding: 10px;
+        .imageContainer {
+            border-radius: $size;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .image {
+                -webkit-user-drag: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1200px) {
+    .mainContainer {
+        .container {
+            column-gap: 70px;
+        }
+    }
+    .statisticsContainer {
+        gap: 30px;
+        .statistic {
+            & > h1 {
+                font-size: 56px;
+                margin-bottom: 8px;
+            }
+            & > p {
+                font-size: 20px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .statisticsContainer {
+        gap: 20px;
+        .statistic {
+            & > h1 {
+                font-size: 48px;
+                margin-bottom: 8px;
+            }
+            & > p {
+                font-size: 20px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        padding: 16px 0 24px;
+        .container {
+            margin-top: 24px;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 250px auto;
+            grid-template-areas: "title" "image" "mainContent";
+            justify-items: center;
+            column-gap: 32px;
+            & > h1 {
+                font-size: 20px;
+                margin-bottom: 24px;
+                text-align: center;
+            }
+            .contentConainer {
+                & > p {
+                    font-size: 13px;
+                    margin-bottom: 13px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .imageContainer {
+                width: 100%;
+                margin-bottom: 16px;
+                &.cover {
+                    display: block;
+                }
+                &.contain {
+                    display: none;
+                }
+            }
+        }
+    }
+    .statisticsContainer {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        grid-gap: 32px 10px;
+        .statistic {
+            & > h1 {
+                font-size: 40px;
+                margin-bottom: 0;
+            }
+            & > p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .mainContainer {
+        .container {
+            grid-template-rows: auto 200px auto;
+            .imageContainer {
+                width: 100%;
+                min-width: 200px;
+                max-width: 400px;
+            }
+        }
+    }
+}

@@ -1,0 +1,95 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.button {
+    display: block;
+    font-weight: $semiBold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 125%;
+    cursor: pointer;
+
+    &:not(.stretch) {
+        width: max-content;
+    }
+    &.stretch {
+        width: 100%;
+    }
+
+    &:not(.primary) {
+        color: $brand_blue_500;
+        background-color: transparent;
+    }
+    &.primary {
+        color: $text_white;
+        background-color: $brand_red_500;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+        &:hover {
+            background-color: #e34242;
+        }
+        &:active {
+            background-color: #d43939;
+        }
+        &:disabled {
+            background-color: $brand_red_400;
+            cursor: not-allowed;
+            &:hover,
+            &:active {
+                background-color: $brand_red_400;
+            }
+        }
+    }
+    &.secondary {
+        color: $brand_red_500;
+        border: 1px solid $brand_red_500;
+        background-color: #fff;
+        &:hover {
+            background-color: #fff1f1;
+        }
+        &:active {
+            background-color: #ffd8d8;
+        }
+        &:disabled {
+            color: rgba(252, 79, 79, 0.7);
+            border-color: rgba(252, 79, 79, 0.7);
+            cursor: not-allowed;
+            &:hover,
+            &:active {
+                background-color: #fff;
+            }
+        }
+    }
+
+    &:not(.small) {
+        padding: 18px 24px;
+        &.adButton {
+            padding: 10px 16px;
+        }
+    }
+    &.small {
+        padding: 16px 24px;
+    }
+    &.noPadding {
+        padding: 0;
+    }
+
+    &:not(.moreRounded) {
+        border-radius: 4px;
+        &.adButton {
+            border-radius: 8px;
+        }
+    }
+    &.moreRounded {
+        border-radius: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .button {
+        font-size: 14px;
+
+        &:not(.small) {
+            padding: 13px 16px;
+        }
+    }
+}

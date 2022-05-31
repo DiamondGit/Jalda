@@ -1,0 +1,88 @@
+@import "../../../styles/сolors";
+@import "../../../styles/_fontWeights.scss";
+
+.select {
+    z-index: 10;
+    width: max-content;
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+
+    $width: 270px;
+    $padding: 10px 12px;
+
+    &.stretch {
+        width: 100%;
+        .container,
+        .dropdown {
+            width: 100%;
+        }
+    }
+
+    &.big {
+        .container,
+        .dropdown .selectNode {
+            padding: 16px 12px;
+        }
+    }
+
+    .container {
+        width: $width;
+        padding: $padding;
+        background-color: #fff;
+        border: 0.5px solid #e3e5e6;
+        border-radius: 4px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:hover {
+            background-color: #e6e6e6;
+        }
+    }
+    .dropdown {
+        display: none;
+        width: $width;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(100%);
+        background-color: #fff;
+        border: 0.75px solid $text_black_400;
+        .selectNode {
+            padding: $padding;
+            &.active {
+                color: $text_white;
+                background-color: $brand_blue_400;
+            }
+            &:hover:not(.active) {
+                background-color: $brand_blue_100;
+            }
+        }
+    }
+    &.active {
+        .dropdown {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .select {
+        font-size: 14px;
+
+        $width: 210px;
+        $padding: 8px;
+
+        .container {
+            width: $width;
+            padding: $padding;
+        }
+        .dropdown {
+            width: $width;
+            .selectNode {
+                padding: $padding;
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+@import "../../styles/сolors";
+@import "../../styles/fontWeights";
+
+.mainContainer {
+    width: 100%;
+    height: max-content;
+    min-height: 345px;
+    display: grid;
+    grid-template-columns: 345px minmax(500px, 1fr);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+    .image {
+        position: relative;
+    }
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 30px 32px;
+        padding-left: 48px;
+        .infos {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateX(calc(-100% - 16px));
+                width: 4px;
+                height: 100%;
+                border-radius: 5px;
+            }
+            &.waiting::after {
+                background-color: $warning_500;
+            }
+            &.paid::after {
+                background-color: $success_500;
+            }
+            .mainTitle {
+                font-weight: $semiBold;
+                font-size: 24px;
+                line-height: 28px;
+                margin-bottom: 16px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .bookInfos {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 14px;
+                margin-bottom: 24px;
+                & > h3 {
+                    font-size: 16px;
+                    span {
+                        font-weight: $medium;
+                    }
+                    &.statusTitle {
+                        position: relative;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translate(calc(100% + 5px), -50%);
+
+                            $size: 12px;
+                            width: $size;
+                            height: $size;
+                            border-radius: $size;
+                        }
+                        &.waiting::after {
+                            background-color: $warning_500;
+                        }
+                        &.paid::after {
+                            background-color: $success_500;
+                        }
+                    }
+                }
+            }
+            .priceTitle {
+                font-weight: $medium;
+                font-size: 20px;
+            }
+        }
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .leftSide,
+            .rightSide {
+                display: flex;
+                align-items: center;
+            }
+            .leftSide {
+                justify-content: flex-start;
+                gap: 25px;
+            }
+            .rightSide {
+                justify-content: flex-end;
+                gap: 12px;
+            }
+        }
+    }
+}

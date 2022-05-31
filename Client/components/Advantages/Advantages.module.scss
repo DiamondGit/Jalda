@@ -1,0 +1,128 @@
+@import "../../styles/сolors.scss";
+@import "../../styles/_fontWeights.scss";
+
+.advantagesContainer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    align-items: start;
+    gap: 50px;
+    .advantage {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .pictureContainer {
+            $circleSize: 150px;
+            $iconSize: 90px;
+            width: $circleSize;
+            height: $circleSize;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .iconContainer {
+                width: $iconSize;
+                height: $iconSize;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                & > div {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                }
+            }
+            .circle {
+                z-index: 1;
+                width: $circleSize;
+                height: $circleSize;
+                border-radius: $circleSize/2;
+                background-color: $brand_blue_100;
+            }
+        }
+        & > h3 {
+            width: 100%;
+            font-size: 20px;
+            font-weight: $medium;
+            margin-bottom: 8px;
+        }
+        & > p {
+            width: 100%;
+            font-size: 16px;
+            line-height: 19px;
+            color: $text_black_400;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .advantagesContainer {
+        grid-gap: 30px;
+        .advantage {
+            .pictureContainer {
+                $circleSize: 130px;
+                $iconSize: 70px;
+                width: $circleSize;
+                height: $circleSize;
+                .iconContainer {
+                    width: $iconSize;
+                    height: $iconSize;
+                }
+                .circle {
+                    width: $circleSize;
+                    height: $circleSize;
+                    border-radius: $circleSize/2;
+                }
+            }
+            & > h3 {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            & > p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .advantagesContainer {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        grid-gap: 15px 20px;
+        .advantage {
+            .pictureContainer {
+                $circleSize: 100px;
+                $iconSize: 50px;
+                width: $circleSize;
+                height: $circleSize;
+                .iconContainer {
+                    width: $iconSize;
+                    height: $iconSize;
+                }
+                .circle {
+                    width: $circleSize;
+                    height: $circleSize;
+                    border-radius: $circleSize/2;
+                }
+            }
+            & > h3 {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            & > p {
+                font-size: 13px;
+            }
+            &:nth-child(odd) {
+                justify-self: end;
+            }
+            &:nth-child(even) {
+                justify-self: start;
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.mainContainer {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    $size: 18px;
+    font-size: $size;
+    position: relative;
+
+    .starsContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 33px;
+        .starContainer {
+            width: $size;
+            height: $size;
+            position: relative;
+            .star {
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                left: 0;
+                cursor: pointer;
+                &.inactive {
+                    color: $brand_red_200;
+                }
+                &.active {
+                    color: $brand_red_500;
+                }
+            }
+        }
+    }
+    .title {
+        font-size: 18px;
+        font-weight: $medium;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

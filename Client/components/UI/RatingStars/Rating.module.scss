@@ -1,0 +1,113 @@
+@import "../../../styles/_сolors.scss";
+@import "../../../styles/_fontWeights.scss";
+
+.ratingContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    $size: 18px;
+    font-size: $size;
+    .stars {
+        .starContainer {
+            display: inline-block;
+            margin-right: 5px;
+            position: relative;
+            width: $size;
+            height: $size;
+            .star {
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                left: 0;
+                color: $brand_red_200;
+                &.halfStar {
+                    z-index: 20;
+                }
+                &.active {
+                    color: $brand_red_500;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    & > span {
+        margin-left: 12px;
+        color: $text_black_400;
+    }
+    &.isGrid {
+        font-size: 16px;
+    }
+    &.large {
+        $size: 28px;
+        .stars {
+            width: max-content;
+            .starContainer {
+                width: $size;
+                height: $size;
+                .star {
+                    $starSize: $size;
+                    font-size: $starSize;
+                    width: $starSize;
+                    height: $starSize;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .ratingContainer {
+        $size: 14px;
+        font-size: $size;
+        & > span {
+            margin-left: 8px;
+        }
+        &.isGrid {
+            font-size: $size;
+        }
+        .stars {
+            .starContainer {
+                width: $size;
+                height: $size;
+                .star {
+                    margin-right: 1px;
+                }
+            }
+        }
+        &.large {
+            $size: 20px;
+            .stars {
+                .star {
+                    $starSize: $size;
+                    font-size: $starSize;
+                    width: $starSize;
+                    height: $starSize;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 445px) {
+    .ratingContainer {
+        $size: 12px;
+        font-size: $size;
+        & > span {
+            margin-left: 5px;
+        }
+        &.isGrid {
+            font-size: $size;
+        }
+        .stars {
+            .starContainer {
+                width: $size;
+                height: $size;
+                .star {
+                    margin-right: 1px;
+                }
+            }
+        }
+    }
+}

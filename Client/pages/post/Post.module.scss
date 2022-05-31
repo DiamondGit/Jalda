@@ -1,0 +1,504 @@
+@import "../../styles/сolors.scss";
+@import "../../styles/_fontWeights.scss";
+
+.mainContainer {
+    padding: 32px 0 64px;
+    .adInfos {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: minmax(400px, 1fr) 1fr;
+        gap: 32px;
+        .leftPart {
+            .imagesContainer {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto auto;
+                gap: 16px;
+                margin-bottom: 32px;
+                .imageContainer {
+                    width: 100%;
+                    aspect-ratio: 3/2;
+                    position: relative;
+                    cursor: pointer;
+                    &:not(.showCount)::after {
+                        content: "";
+                        position: absolute;
+                        z-index: 10;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #000;
+                        opacity: 0;
+                        transition: opacity 0.2s;
+                    }
+                    &.showCount .count {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.36);
+                        z-index: 10;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 36px;
+                        font-weight: $semiBold;
+                        color: $text_white;
+                    }
+                    .iconContainer {
+                        position: absolute;
+                        z-index: 20;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        .icon {
+                            position: relative;
+                            width: 100px;
+                            height: 100px;
+                            opacity: 0;
+                            transition: opacity 0.2s;
+                        }
+                    }
+                    &:hover {
+                        &::after {
+                            opacity: 0.36;
+                        }
+                        .icon {
+                            opacity: 1;
+                        }
+                    }
+                    &.main {
+                        grid-area: 1/1/3/3;
+                    }
+                    &.second {
+                        grid-area: 3/1/4/2;
+                    }
+                    &.last {
+                        grid-area: 3/2/4/3;
+                    }
+                }
+            }
+        }
+        .rightPart {
+            & > h1 {
+                font-size: 36px;
+                font-weight: $semiBold;
+                margin-bottom: 10px;
+            }
+            .postDate {
+                font-size: 16px;
+                color: $text_black_300;
+            }
+            .rating {
+                margin-top: 8px;
+                margin-bottom: 24px;
+            }
+            .price {
+                font-size: 24px;
+                font-weight: $medium;
+                margin-bottom: 24px;
+            }
+            .infoContainer {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: 12px 24px;
+                margin-bottom: 24px;
+                .info {
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    .icon {
+                        $iconSize: 24px;
+                        width: $iconSize;
+                        height: $iconSize;
+                        margin-right: 12px;
+                        position: relative;
+                        img {
+                            -webkit-user-drag: none;
+                        }
+                    }
+                }
+            }
+            .descriptionContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 24px;
+                .description {
+                    font-size: 18px;
+                    color: $text_black_400;
+                    line-height: 125%;
+                }
+            }
+            .buttons {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 48px;
+                gap: 8px;
+                .icon {
+                    margin-right: 8px;
+                    font-size: 20px;
+                    &.favorite {
+                        color: $brand_red_500;
+                    }
+                }
+                .mobile {
+                    display: none;
+                }
+            }
+            .mapSection {
+                & > h3 {
+                    font-size: 16px;
+                    color: $text_black_300;
+                    margin-bottom: 16px;
+                }
+                .mapContainer {
+                    overflow: hidden;
+                    width: 100%;
+                    // min-width: 100%;
+                    // max-width: 300px;
+                    height: 165px;
+                }
+            }
+        }
+    }
+    .imageModalCarousel {
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & > h1 {
+                position: absolute;
+                z-index: 100;
+                top: 100px;
+                left: 100px;
+                font-size: 40px;
+                color: white;
+            }
+            .carousel {
+                overflow: hidden;
+                z-index: 10;
+                .imageContainer {
+                    position: relative;
+                    width: 100vw;
+                    height: calc(100vh - 64px);
+                    * {
+                        -webkit-user-drag: none;
+                    }
+                }
+            }
+            .closeButton {
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background-color: rgba(0, 0, 0, 0.3);
+                font-size: 40px;
+                color: rgba(255, 255, 255, 0.3);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: background-color 0.2s, color 0.2s;
+                * {
+                    width: 40px;
+                    height: 40px;
+                }
+                &:hover {
+                    color: rgba(255, 255, 255, 1);
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
+            }
+            .shadow {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.75;
+                background-color: #000;
+            }
+        }
+    }
+}
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 48px;
+    .container {
+        width: 844px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: "Calendar Slider" ". Total";
+        gap: 48px;
+        .calendarContainer {
+            grid-area: Calendar;
+        }
+        .sliderContainer {
+            grid-area: Slider;
+            width: 100%;
+            h3 {
+                font-size: 20px;
+                margin-bottom: 32px;
+            }
+            .labels {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 32px;
+                margin-top: 26px;
+                .label {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 12px;
+                    font-size: 15px;
+                    font-weight: $medium;
+                    span {
+                        font-size: 18px;
+                        font-weight: $regular;
+                        padding: 10px 16px;
+                        border: 0.5px solid $text_black_300;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+        .totalInfo {
+            grid-area: Total;
+            padding: 24px;
+            border: 1px solid $text_black_300;
+            border-radius: 12px;
+            .firstPart {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 14px;
+                .postTitle {
+                    font-size: 22px;
+                    font-weight: $medium;
+                }
+                .info {
+                    font-size: 16px;
+                    .hoursCount {
+                        color: $text_black_400;
+                    }
+                }
+            }
+            hr {
+                width: 100%;
+                border-top: 1px solid #e3e5e6;
+                margin: 24px 0;
+            }
+            .total {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 5px;
+                .totalPrice {
+                    font-size: 20px;
+                    font-weight: $medium;
+                }
+                .description {
+                    font-size: 15px;
+                    line-height: 18px;
+                    color: $text_black_400;
+                }
+            }
+        }
+    }
+    .buttons {
+        width: 442px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+    }
+}
+.sectionTitle {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: $semiBold;
+}
+.notFound {
+    color: $text_black_400;
+    font-size: 18px;
+    line-height: 21px;
+}
+.commentsContainer {
+    margin-top: 32px;
+}
+.similarAdsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .similarAds {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    .loadMoreButton {
+        width: 100%;
+        font-size: 18px;
+        color: $brand_blue_500;
+        padding: 12px 0;
+        border-radius: 12px;
+        margin-top: 48px;
+        border: 0.5px solid #e3e5e6;
+        background-color: $text_white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        &:hover {
+            background-color: #f8f8f8;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .similarAdsContainer {
+        .similarAds {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 8px;
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .mainContainer {
+        padding: 16px 0 24px;
+        .adInfos {
+            margin-top: 24px;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+            gap: 24px;
+            .leftPart {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                .imagesContainer {
+                    margin-bottom: 0;
+                }
+            }
+            .rightPart {
+                & > h1 {
+                    font-size: 20px;
+                    margin-bottom: 5px;
+                }
+                .postDate {
+                    font-size: 12px;
+                }
+                .rating {
+                    margin-top: 8px;
+                    margin-bottom: 16px;
+                }
+                .price {
+                    font-size: 16px;
+                    margin-bottom: 16px;
+                }
+                .infoContainer {
+                    gap: 12px 16px;
+                    margin-bottom: 16px;
+                    .info {
+                        font-size: 15px;
+                        .icon {
+                            $iconSize: 18px;
+                            width: $iconSize;
+                            height: $iconSize;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+                .description {
+                    font-size: 13px;
+                    margin-bottom: 16px;
+                }
+                .buttons {
+                    margin-bottom: 24px;
+                    .desktop {
+                        display: none;
+                    }
+                    .mobile {
+                        display: inline;
+                    }
+                }
+                .mapSection {
+                    & > h3 {
+                        font-size: 12px;
+                        margin-bottom: 12px;
+                    }
+                    .mapContainer {
+                        height: 120px;
+                    }
+                }
+            }
+        }
+        .imageModalCarousel .container {
+            .closeButton {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+    .sectionTitle {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    .similarAdsContainer {
+        .loadMoreButton {
+            margin-top: 24px;
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        .adInfos {
+            .leftPart {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .sectionTitle {
+        font-size: 18px;
+    }
+    .similarAdsContainer {
+        .similarAds {
+            gap: 14px 6px;
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .similarAdsContainer {
+        .similarAds {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+    }
+}

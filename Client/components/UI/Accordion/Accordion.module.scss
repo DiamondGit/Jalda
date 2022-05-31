@@ -1,0 +1,126 @@
+@import "../../../styles/_сolors.scss";
+@import "../../../styles/_fontWeights.scss";
+
+.accordion {
+    width: 100%;
+    border: 1px solid $brand_blue_400;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    overflow: hidden;
+
+    $fontSize: 24px;
+    $fontSizeContent: 20px;
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: $fontSize;
+        font-size: $fontSize;
+        font-weight: $medium;
+        .icon {
+            font-size: $fontSize + 4px;
+            padding: 3px;
+            color: $brand_blue_500;
+        }
+    }
+    .content {
+        display: none;
+        height: max-content;
+        padding: 0 $fontSize * 2 $fontSize;
+        overflow: hidden;
+        transition: all 0.2s;
+        & > p,
+        & > ol li {
+            font-size: $fontSizeContent;
+            color: $text_black_400;
+            line-height: $fontSizeContent + 5px;
+        }
+        & > p {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        & > ol {
+            margin-left: 20px;
+        }
+        &.active {
+            display: block;
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .accordion {
+        $fontSize: 22px;
+        $fontSizeContent: 18px;
+
+        margin-bottom: 26px;
+        .heading {
+            padding: $fontSize;
+            font-size: $fontSize;
+            .icon {
+                font-size: $fontSize + 4px;
+            }
+        }
+        .content {
+            padding: 0 $fontSize * 2 $fontSize;
+            & > p,
+            & > ol li {
+                font-size: $fontSizeContent;
+                line-height: $fontSizeContent + 5px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .accordion {
+        $fontSize: 20px;
+        $fontSizeContent: 16px;
+
+        margin-bottom: 20px;
+        .heading {
+            padding: $fontSize;
+            font-size: $fontSize;
+            .icon {
+                font-size: $fontSize + 4px;
+            }
+        }
+        .content {
+            padding: 0 $fontSize * 2 $fontSize;
+            & > p,
+            & > ol li {
+                font-size: $fontSizeContent;
+                line-height: $fontSizeContent + 5px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .accordion {
+        $fontSize: 16px;
+        $fontSizeContent: 14px;
+
+        margin-bottom: 16px;
+        .heading {
+            padding: 12px $fontSize;
+            font-size: $fontSize;
+            .icon {
+                font-size: $fontSize + 4px;
+            }
+        }
+        .content {
+            padding: 0 $fontSize * 2 $fontSize;
+            & > p,
+            & > ol li {
+                font-size: $fontSizeContent;
+                line-height: $fontSizeContent + 5px;
+            }
+        }
+    }
+}

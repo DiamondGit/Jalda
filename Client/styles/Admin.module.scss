@@ -1,0 +1,99 @@
+@import "./сolors";
+@import "./fontWeights";
+
+.mainContainer {
+    padding: 56px 0;
+    .mainTitle {
+        font-size: 36px;
+        font-weight: $semiBold;
+        margin-bottom: 32px;
+    }
+    .notFound {
+        color: $text_black_300;
+        font-size: 18px;
+        line-height: 21px;
+    }
+    .table {
+        width: 100%;
+        $padding: 0 24px;
+        $tableColumns: 120px 1fr 1fr 200px 200px;
+        $requsetVerPdding: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 24px;
+
+        .tableHeader {
+            display: grid;
+            grid-template-columns: $tableColumns;
+            justify-items: center;
+            padding: $padding;
+            h2 {
+                font-weight: $medium;
+                font-size: 20px;
+                width: 100%;
+            }
+        }
+        .request {
+            display: grid;
+            grid-template-columns: $tableColumns;
+            align-items: center;
+            padding: $padding;
+            padding-top: $requsetVerPdding;
+            padding-bottom: $requsetVerPdding;
+            border-radius: 12px;
+            box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+            & > div {
+                font-size: 18px;
+                h2 {
+                    width: max-content;
+                }
+                &.name,
+                &.companyName {
+                    font-size: 20px;
+                }
+            }
+            .datetime {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 8px;
+                span {
+                    &.time {
+                        font-size: 14px;
+                        color: $text_black_400;
+                    }
+                }
+            }
+            .detailedButton {
+                margin-left: auto;
+            }
+        }
+    }
+}
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    .infosContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 18px;
+
+        & > div {
+            font-size: 18px;
+            span {
+                font-weight: $semiBold;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,91 @@
+@import "../../styles/сolors";
+@import "../../styles/fontWeights";
+
+.container {
+    width: max-content;
+    $shift: 20px;
+
+    padding-left: $shift;
+    margin-left: -$shift;
+    margin-top: 8px;
+
+    .comment {
+        width: 100%;
+        // min-width: 100%;
+        max-width: 424px;
+        height: max-content;
+        padding: 24px;
+        background-color: $text_white;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            justify-items: start;
+            align-items: center;
+            margin-bottom: 18px;
+
+            .pictureContainer {
+                position: relative;
+                $size: 70px;
+                width: $size;
+                height: $size;
+                border-radius: $size;
+                overflow: hidden;
+                margin-right: 16px;
+            }
+            .title {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                .name {
+                    font-size: 18px;
+                    font-weight: $semiBold;
+                    margin-bottom: 3px;
+                }
+                .date {
+                    font-size: 16px;
+                    color: $text_black_300;
+                    margin-bottom: 3px;
+                }
+            }
+        }
+        .content {
+            & > p {
+                $fontSize: 15px;
+                font-size: $fontSize;
+
+                $numberOfLines: 4;
+                $lineHeight: calc($fontSize * 1.25);
+                line-height: $lineHeight;
+
+                &:not(.fullText) {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: $numberOfLines;
+                    max-height: calc($lineHeight * $numberOfLines);
+                }
+            }
+            .openButton {
+                margin-top: 8px;
+                font-weight: $medium;
+                font-size: 15px;
+                color: #0097ec;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        max-width: calc(100vw - 32px);
+    }
+}

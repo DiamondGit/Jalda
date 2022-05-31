@@ -1,0 +1,121 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.reviewRating {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .leftPart {
+        margin-right: 64px;
+        h3 {
+            font-size: 64px;
+            color: $brand_red_500;
+            margin-bottom: 12px;
+            & > span {
+                margin: 0 12px;
+            }
+        }
+        .starsContainer {
+            margin-bottom: 12px;
+        }
+        & > span {
+            font-size: 18px;
+            color: $text_black_400;
+        }
+    }
+    .rightPart {
+        .ratingItem {
+            display: grid;
+            grid-template-columns: 40px 230px auto;
+            gap: 16px;
+            margin-bottom: 10px;
+            span {
+                font-size: 18px;
+            }
+            .rate {
+                justify-self: end;
+                .icon {
+                    margin-left: 5px;
+                }
+            }
+            .indicator {
+                height: 18px;
+                background-color: #f6f6f6;
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    border-radius: 5px;
+                    background-color: $brand_red_500;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reviewRating {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 32px;
+        .leftPart {
+            margin-right: 0;
+            h3 {
+                font-size: 48px;
+                margin-bottom: 8px;
+                & > span {
+                    margin: 0 8px;
+                }
+            }
+            .starsContainer {
+                margin-bottom: 8px;
+            }
+            & > span {
+                font-size: 15px;
+            }
+        }
+        .rightPart {
+            .ratingItem {
+                grid-template-columns: 40px minmax(100px, 1fr) 40px;
+                gap: 8px;
+                margin-bottom: 10px;
+                span {
+                    font-size: 15px;
+                }
+                .rate {
+                    .icon {
+                        margin-left: 5px;
+                    }
+                }
+                .indicator {
+                    height: 12px;
+                    border-radius: 3px;
+                    &::after {
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .reviewRating {
+        .rightPart {
+            .ratingItem {
+                grid-template-columns: 40px minmax(100px, 1fr);
+                .count {
+                    display: none;
+                }
+            }
+        }
+    }
+}

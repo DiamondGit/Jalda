@@ -1,0 +1,33 @@
+@import "../../../styles/сolors";
+@import "../../../styles/fontWeights";
+
+.mainContainer {
+    display: grid;
+    width: max-content;
+    grid-auto-flow: column;
+    grid-auto-columns: 60px 170px;
+    align-items: center;
+    padding-bottom: 27px;
+    .statusNode {
+        $nodeSize: 60px;
+        width: $nodeSize;
+        height: $nodeSize;
+        position: relative;
+        .statusNodeTitle {
+            width: max-content;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            font-size: 16px;
+            color: $text_black_400;
+        }
+    }
+    .statusEdge {
+        width: 100%;
+        border-top: 3px dashed $text_black_300;
+        &.active {
+            border-color: $success_500;
+        }
+    }
+}
