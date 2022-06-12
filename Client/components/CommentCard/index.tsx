@@ -69,7 +69,7 @@ const CommentCard = ({ user, postDate, rating, text }: CommentType) => {
                         />
                     </div>
                     <div className={styles.title}>
-                        <h3 className={styles.name}>{`${user.surname} ${user.surname || ""} ${user.fathername || ""}`}</h3>
+                        <h3 className={styles.name}>{`${user.name} ${user.surname || ""} ${user.fathername || ""}`.trim()}</h3>
                         <h3 className={styles.date}>{getProcessedDate(postDate)}</h3>
                         <RatingStars rating={rating} withoutNumbers />
                     </div>

@@ -36,7 +36,10 @@ const SignupForm = () => {
 
     useEffect(() => {
         return () => {
-            if (localStorage) {
+            if (localStorage && localStorage.getItem("post_redirection-signup")) {
+                const redirectionJson = JSON.parse(localStorage.getItem("post_redirection-signup"));
+                breadcrumbsContext.setBreadcrumbsFromLocalstorage(JSON.parse(redirectionJson.breadcrumbs));
+
                 localStorage.removeItem("post_redirection-signup");
             }
 
@@ -66,7 +69,6 @@ const SignupForm = () => {
 
                         if (localStorage.getItem("post_redirection-signup")) {
                             const redirectionJson = JSON.parse(localStorage.getItem("post_redirection-signup"));
-                            breadcrumbsContext.setBreadcrumbsFromLocalstorage(JSON.parse(redirectionJson.breadcrumbs));
 
                             localStorage.setItem("open_book_modal", "true");
 
@@ -222,7 +224,16 @@ const SignupForm = () => {
             <h3 className={styles.switch}>
                 Уже есть аккаунт?{" "}
                 <Link href={_paths.login}>
-                    <a className={styles.link}>Войти</a>
+                    <a
+                        className={styles.link}
+                        onClick={() => {
+                            if (localStorage && localStorage.getItem("post_redirection-signup")) {
+                                localStorage.setItem("post_redirection-login", localStorage.getItem("post_redirection-signup"));
+                            }
+                        }}
+                    >
+                        Войти
+                    </a>
                 </Link>
             </h3>
         </>

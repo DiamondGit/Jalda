@@ -46,8 +46,12 @@ export const signup = async (req, res) => {
         const userRole = await RoleModel.findOne().where("name").equals("User");
         userRoles.push(userRole._id);
 
-        const newUser = new UserModel({ ...req.body, password: hashedPassword, roles: userRoles });
+        console.log("before", req.body);
+
+        const newUser = new UserModel({ ...req.body, password: hashedPassword, roles: userRoles, iinNumber: new Date() });
         await newUser.save();
+
+        console.log("after");
 
         const result = await UserModel.findById(newUser._id).populate("roles").populate({
             path: "creditCards",
@@ -58,7 +62,7 @@ export const signup = async (req, res) => {
 
         res.status(201).json({ result, token });
     } catch (error) {
-        return res.status(500).json({ message: "Something went wrong." });
+        res.status(500).json({ message: "Something went wrong." });
 
         console.log(error);
     }
@@ -77,7 +81,7 @@ export const signupAuthor = async (req, res) => {
         const userRole = await RoleModel.findOne().where("name").equals("User");
         userRoles.push(userRole._id);
 
-        const newUser = new UserModel({ ...req.body, roles: userRoles, status: "waiting", sendDate: new Date() });
+        const newUser = new UserModel({ ...req.body, roles: userRoles, status: "waiting", sendDate: new Date().getTime() });
 
         await newUser.save();
 
@@ -100,7 +104,11 @@ export const upgradeToAuthor = async (req, res) => {
         const authorRole = await RoleModel.findOne().where("name").equals("Author");
         user.roles.push(authorRole._id);
 
-        const result = await UserModel.findByIdAndUpdate(_id, { ...data, roles: user.roles, sendDate: new Date() }, { new: true })
+        const result = await UserModel.findByIdAndUpdate(
+            _id,
+            { ...data, roles: user.roles, status: "waiting", sendDate: new Date() },
+            { new: true }
+        )
             .populate("roles")
             .populate({
                 path: "creditCards",

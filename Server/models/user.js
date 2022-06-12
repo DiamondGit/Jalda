@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
     password: { type: String },
     favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
     companyName: String,
-    iinNumber: { type: String, unique: true },
+    iinNumber: { type: String, unique: true, sparse: true },
     roles: [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -29,7 +29,7 @@ import { _monthNames, _sexTypes } from "../../data";
 import { Modal } from "../../components/UI/Modal";
 import _categories from "../../data/categories";
 import { _contacts, _socials } from "../../data/infos";
-import { getDecodeStorage, useDeclension } from "../../functions";
+import { generateComments, getDecodeStorage, useDeclension } from "../../functions";
 import { MyCalendar } from "../../components/UI/MyCalendar";
 import { MySlider } from "../../components/UI/MySlider";
 import { ModalSuccess } from "../../components/UI/Modal/ModalSuccess";
@@ -90,6 +90,8 @@ export default function Post({ categories, contacts, socials }) {
 
     const [postId] = useState<string>(queryId[0]);
     const [post, setPost] = useState<PostType>(null);
+
+    const randomComments = generateComments();
 
     const [similarPosts, setSimilarPostIds] = useState<AdCardType[]>(null);
     const [similarPostsPage, setSimilarPostsPage] = useState(1);
@@ -268,7 +270,7 @@ export default function Post({ categories, contacts, socials }) {
         if (!authContext.isLogged && localStorage) {
             localStorage.setItem(
                 "post_redirection-login",
-                JSON.stringify({ breadcrumbs: localStorage.getItem("breadcrumbs"), postId: postId[0] })
+                JSON.stringify({ breadcrumbs: localStorage.getItem("breadcrumbs"), postId: postId })
             );
             router.push(_paths.login);
         } else {
@@ -644,10 +646,10 @@ export default function Post({ categories, contacts, socials }) {
                     <h2 className={styles.sectionTitle}>Отзывы клиентов</h2>
                     <ReviewRating rating={post.rating} />
                     <div className={styles.commentsContainer}>
-                        {post.reviews.length > 0 ? (
+                        {randomComments.length > 0 ? (
                             <>
                                 <AliceCarousel autoWidth mouseTracking disableDotsControls disableButtonsControls>
-                                    {post.reviews.map((comment) => (
+                                    {randomComments.map((comment) => (
                                         <CommentCard {...comment} key={comment.id} />
                                     ))}
                                 </AliceCarousel>

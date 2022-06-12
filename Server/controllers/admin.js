@@ -66,7 +66,7 @@ export const approveAuthor = async (req, res) => {
             host: "smtp.gmail.com",
             auth: {
                 user: "jalda.platform@gmail.com",
-                pass: "jalda2022",
+                pass: "jocdtjillimqoale",
             },
             secure: true,
         });
@@ -84,7 +84,8 @@ export const approveAuthor = async (req, res) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                res.status(400).json({ message: "Error" });
+                console.log(error);
+                return res.status(400).json({ message: "Error" });
             }
             console.log("Email sent: " + info.response);
             return res.status(201).json({ message: "Success", result: waitingAuthors });

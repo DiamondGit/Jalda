@@ -1,4 +1,6 @@
 import { NextRouter } from "next/router";
+import { _randomComments } from "../data";
+import { CommentType } from "../interfaces";
 
 export function useDeclension(_form_1: string, _form_2: string, _form_3: string): (num: number) => string {
     return (num: number) => {
@@ -49,3 +51,7 @@ export function getDecodeStorage(key: string): string {
     if (localStorage && localStorage.getItem(key)) return decodeString(localStorage.getItem(key));
     return null;
 }
+
+export const generateComments = (): CommentType[] => {
+    return [..._randomComments].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * _randomComments.length));
+};

@@ -49,7 +49,10 @@ const LoginForm = () => {
 
     useEffect(() => {
         return () => {
-            if (localStorage) {
+            if (localStorage && localStorage.getItem("post_redirection-login")) {
+                const redirectionJson = JSON.parse(localStorage.getItem("post_redirection-login"));
+                breadcrumbsContext.setBreadcrumbsFromLocalstorage(JSON.parse(redirectionJson.breadcrumbs));
+
                 localStorage.removeItem("post_redirection-login");
             }
 
@@ -85,7 +88,6 @@ const LoginForm = () => {
 
                         if (localStorage.getItem("post_redirection-login")) {
                             const redirectionJson = JSON.parse(localStorage.getItem("post_redirection-login"));
-                            breadcrumbsContext.setBreadcrumbsFromLocalstorage(JSON.parse(redirectionJson.breadcrumbs));
 
                             localStorage.setItem("open_book_modal", "true");
 

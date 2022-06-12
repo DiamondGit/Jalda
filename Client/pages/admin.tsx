@@ -86,7 +86,9 @@ const Request = ({ number, request, openRequest }: RequestNodeProps) => {
                 <h2>{`${request.surname} ${request.name} ${request.fatherName || ""}`.trim()}</h2>
             </div>
             <div className={styles.datetime}>
-                <span className={styles.date}>{`${format(date.getDate())}.${format(date.getUTCMonth())}.${date.getUTCFullYear()}`}</span>
+                <span className={styles.date}>{`${format(date.getDate())}.${format(
+                    date.getUTCMonth() + 1
+                )}.${date.getUTCFullYear()}`}</span>
                 <span className={styles.time}>{`${format(date.getUTCHours() + 6)}:${format(date.getUTCMinutes())}`}</span>
             </div>
             <div className={styles.detailedButton}>
@@ -132,16 +134,6 @@ export default function Admin({ categories, socials, contacts }: AdminPageProps)
 
         if (authContext.isLogged && authContext.role === "Admin") setLoading(false);
     }, []);
-
-    const list = [
-        "rooms",
-        "rooms/business",
-        "rooms/business/teambuilding",
-        "rooms/business/courses",
-        "rooms/sport",
-        "rooms/sport/dance",
-        "rooms/sport/yoga",
-    ];
 
     const [requests, setRequests] = useState<RequestType[]>(null);
 

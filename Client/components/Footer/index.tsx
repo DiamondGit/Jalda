@@ -4,7 +4,7 @@ import _paths from "../../data/paths";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Footer.module.scss";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useStaticDataContext } from "../../context/staticData";
 import { useAuthContext } from "../../context/auth";
 
@@ -36,9 +36,17 @@ const Footer = () => {
     const staticData = useStaticDataContext();
     const authContext = useAuthContext();
 
+    const [isAdmin, setAdmin] = useState(authContext.role === "Admin");
+
     const categories = staticData.get.categories;
     const contacts = staticData.get.contacts;
     const socials = staticData.get.socials;
+
+    useEffect(() => {
+        return () => {
+            setAdmin(false);
+        };
+    }, []);
 
     return (
         <footer className={styles.footer}>
@@ -46,7 +54,7 @@ const Footer = () => {
                 <div className={styles.mainContainer}>
                     <div className={styles.logoContainer}>
                         <div className={styles.logo}>
-                            {authContext.role !== "Admin" ? (
+                            {!isAdmin ? (
                                 <Link href={_paths.main}>
                                     <a>
                                         <Image
@@ -62,9 +70,9 @@ const Footer = () => {
                                 <Image src="/brand/logo&label_white.png" alt="Jalda logo" layout="fill" unoptimized={true} priority />
                             )}
                         </div>
-                        {authContext.role !== "Admin" && <h3>Платформа для аренды чего-угодно</h3>}
+                        {!isAdmin && <h3>Платформа для аренды чего-угодно</h3>}
                     </div>
-                    {authContext.role !== "Admin" && (
+                    {!isAdmin && (
                         <>
                             <div className={styles.linksSection}>
                                 <FooterAccordion title={"Объявления"} classId={"ads"}>
