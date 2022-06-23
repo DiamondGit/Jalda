@@ -4,6 +4,7 @@
 # Installation
 ## First launch
 ```
+npm i
 npm run create_dev
 ```
 ## Other launches
